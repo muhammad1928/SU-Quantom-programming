@@ -3,12 +3,6 @@
 from qiskit import QuantumCircuit
 
 def inner_product(circuit, a):
-    """
-    Adds CNOT gates to the circuit to compute the inner product modulo 2.
-    Parameters:
-        circuit (QuantumCircuit): The quantum circuit.
-        a (str): A binary string representing the secret.
-    """
     n = len(a)
     for i, bit in enumerate(reversed(a)):
         if bit == '1':
@@ -48,7 +42,6 @@ print(circuit)
 
 from qiskit import QuantumCircuit
 
-# Assuming the functions 'inner_product' and 'hadamards' are already defined
 
 def bernstein_vazirani(a):
     n = len(a)
@@ -101,10 +94,10 @@ def simulate_circuit(a):
     prob = {key:value/n_shots for key,value in counts.items()}
     
     # Print the counts, expecting the result to be the binary string a with high probability
-    print("Measurement results:", counts)
+    print("Counts:", counts)
     print("Probabilities: ", prob)
 
 
 # Example usage:
-a = "01101"  # Example secret string
+a = "01101"  
 simulate_circuit(a)
