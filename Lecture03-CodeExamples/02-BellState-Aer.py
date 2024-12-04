@@ -6,6 +6,7 @@ circuit.cx(0, 1)    # Apply a CNOT gate with qubit 0 as control and qubit 1 as t
 circuit.measure([0, 1], [0, 1])  # Measure qubit 0 and 1 and store results in classical bits 0 and 1 respectively.
 print(circuit) # Print the circuit
 
+# trying to figure out what this does
 
 #Simulation using AerSimulator()
 #The code below is generic and can be used with other quantum circuits with a small number of qubits. 
