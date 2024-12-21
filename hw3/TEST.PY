@@ -111,7 +111,26 @@ class ClassicalCircuit:
         for output_gate in self.output_gates:
             quantumCircuit.cx(output_gate, output_gate + self.n_outputs)
         for output_gate in self.output_gates:
-            quantumCircuit.measure(output_gate + self.n_outputs, output_gate)
+            if output_gate + self.n_outputs < len(quantumCircuit.qubits) and output_gate < len(quantumCircuit.clbits):
+                quantumCircuit.measure(output_gate + self.n_outputs, output_gate)
+            else:
+                raise IndexError(f"Index {output_gate + self.n_outputs} or {output_gate} out of range.")
+
+        print(f"Output gates: {self.output_gates}")
+        print(f"Number of outputs: {self.n_outputs}")
+        print(f"Number of qubits: {len(quantumCircuit.qubits)}")
+        print(f"Number of classical bits: {len(quantumCircuit.clbits)}")
+
+        for output_gate in self.output_gates:
+            print(f"Output gate: {output_gate}")
+            print(f"Output gate + n_outputs: {output_gate + self.n_outputs}")
+            print(f"Number of qubits: {len(quantumCircuit.qubits)}")
+            print(f"Number of classical bits: {len(quantumCircuit.clbits)}")
+            
+            if output_gate + self.n_outputs < len(quantumCircuit.qubits) and output_gate < len(quantumCircuit.clbits):
+                quantumCircuit.measure(output_gate + self.n_outputs, output_gate)
+            else:
+                raise IndexError(f"Index {output_gate + self.n_outputs} or {output_gate} out of range.")
 
 # Initialize the ClassicalCircuit from a file and perform conversions
 cc = ClassicalCircuit("circuit.txt")
